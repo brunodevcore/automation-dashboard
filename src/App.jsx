@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react'
 import TransactionTable from './components/TransactionTable'
+import TransactionForm from './components/TransactionForm'
+import SummaryCards from './components/SummaryCards'
+import { initialTransactions } from './data/initialTransactions'
+import { alertsData } from './data/alerts'
+import { getTransactions, saveTransactions } from './services/transactionService'
+
 
 function App() {
   const [transactions, setTransactions] = useState(() => {
-    const savedTransactions = localStorage.getItem("transactions");
-
-    return savedTransactions
-      ? JSON.parse(savedTransactions)
-      : [
-        { id: 1, concept: "Pago de cliente", amount: 850, type: "Ingreso" },
-        { id: 2, concept: "Alquiler oficina", amount: 300, type: "Gasto" },
-        { id: 3, concept: "Servicio internet", amount: 45, type: "Gasto" },
-      ];
+    const stored = getTransactions()
+    return stored.length ? stored : initialTransactions
   });
 
   const [formData, setFormData] = useState({
@@ -23,14 +22,10 @@ function App() {
   const [filter, setFilter] = useState('Todos')
   const [searchTerm, setSearchTerm] = useState('')
 
-  const alerts = [
-    "Factura de internet vence mañana",
-    "Alquiler pendiente en 3 días",
-    "Revisar gastos operativos semanales",
-  ];
+  const alerts = alertsData;
 
   useEffect(() => {
-    localStorage.setItem("transactions", JSON.stringify(transactions));
+    saveTransactions(transactions)
   }, [transactions]);
 
   const handleChange = (e) => {
@@ -109,82 +104,20 @@ function App() {
           </p>
         </header>
 
-        <section className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-green-500">
-            <p className="text-sm text-slate-400">Monthly income</p>
-            <h2 className="mt-2">
-              <span className="text-3xl font-bold text-green-600">
-                $ {formatCurrency(totalIncome)}
-              </span>
-            </h2>
-          </div>
-
-          <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-red-500">
-            <p className="text-sm text-slate-400">Monthly expenses</p>
-            <h2 className="mt-2">
-              <span className="text-3xl font-bold text-red-600">
-                $ {formatCurrency(totalExpenses)}
-              </span>
-            </h2>
-          </div>
-
-          <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-amber-500">
-            <p className="text-sm text-slate-400">Active alerts</p>
-            <h2 className="mt-2">
-              <span className="text-3xl font-bold text-amber-600">
-                {alerts.length}
-              </span>
-            </h2>
-          </div>
-        </section>
+        <SummaryCards
+          totalIncome={totalIncome}
+          totalExpenses={totalExpenses}
+          alertsCount={alerts.length}
+          formatCurrency={formatCurrency}
+        />
 
         <section className="mt-8 grid gap-6 lg:grid-cols-3">
           <div className="rounded-2xl bg-white p-6 shadow-sm lg:col-span-2">
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-slate-900">
-                Add new transaction
-              </h3>
-
-              <form
-                onSubmit={handleSubmit}
-                className="mt-4 grid gap-4 md:grid-cols-3"
-              >
-                <input
-                  type="text"
-                  name="concept"
-                  placeholder="Concept"
-                  value={formData.concept}
-                  onChange={handleChange}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm outline-none focus:border-slate-500"
-                />
-
-                <input
-                  type="number"
-                  name="amount"
-                  placeholder="Amount"
-                  value={formData.amount}
-                  onChange={handleChange}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm outline-none focus:border-slate-500"
-                />
-
-                <select
-                  name="type"
-                  value={formData.type}
-                  onChange={handleChange}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm outline-none focus:border-slate-500"
-                >
-                  <option value="Ingreso">Ingreso</option>
-                  <option value="Gasto">Gasto</option>
-                </select>
-
-                <button
-                  type="submit"
-                  className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-800 md:col-span-3"
-                >
-                  Add transaction
-                </button>
-              </form>
-            </div>
+            <TransactionForm
+              formData={formData}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+            />
 
             <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <h3 className="text-lg font-semibold text-slate-900">
