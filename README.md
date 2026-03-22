@@ -1,43 +1,43 @@
 # Automation Dashboard
 
-A business-focused dashboard designed for small businesses to manage transactions, monitor income and expenses, and track financial alerts in a simple and efficient way.
+Dashboard orientado a pequeñas empresas para gestionar transacciones, visualizar ingresos y gastos, y dar seguimiento a alertas financieras de forma simple y organizada.
 
-## Features
+## Funcionalidades
 
-- Add and delete transactions
-- Filter by transaction type (Income / Expense)
-- Search transactions by concept
-- Persistent data using localStorage
-- Clean and modular component-based architecture
-- Service layer for data handling (simulated backend)
+- Alta de transacciones
+- Eliminación de transacciones
+- Filtro por tipo de movimiento
+- Búsqueda por concepto
+- Persistencia de datos con localStorage
+- Arquitectura modular basada en componentes
+- Capa de servicios para manejo de datos
 
-## Tech Stack
+## Tecnologías utilizadas
 
 - React
 - Vite
 - Tailwind CSS
 - JavaScript (ES6+)
 
-## Architecture
+## Estructura del proyecto
 
-The project follows a simple but scalable structure:
+- `components/` → componentes visuales y reutilizables
+- `data/` → datos iniciales
+- `services/` → capa de servicios para persistencia de datos
 
-- `components/` → UI components (Table, Form, Summary)
-- `data/` → Initial static data
-- `services/` → Data handling layer (simulating API behavior)
+## Objetivo
 
-## Purpose
+Este proyecto fue desarrollado como pieza de portfolio para demostrar:
 
-This project was built as a portfolio piece to demonstrate:
+- construcción de interfaces orientadas a negocio
+- manejo de estado y datos
+- organización de código escalable
+- desarrollo frontend con enfoque profesional
 
-- Frontend architecture and organization
-- Data handling and state management
-- Business-oriented UI development
-- Clean, scalable code structure
+## Mejoras futuras
 
-## Future Improvements
-
-- Integration with real backend (Node.js / Java / C#)
-- Authentication system
-- Charts and analytics
-- API consumption (REST)
+- integración con backend real
+- autenticación de usuarios
+- base de datos
+- gráficos y analítica
+- consumo de API REST
