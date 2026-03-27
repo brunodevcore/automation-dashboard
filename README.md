@@ -1,92 +1,79 @@
-# Automation Dashboard
+# InvoiceFlow Frontend
 
-Financial dashboard designed for small businesses to manage income, expenses, and key metrics in a clear and simple way.
+## English
 
-## Features
+InvoiceFlow is a full-stack web application designed to manage clients and invoices in a clean, minimal and professional interface.
 
-- Add and delete transactions
-- Filter transactions by type
-- Search functionality
-- Monthly income and expense summary
-- Smart alerts for financial control
-- Local data persistence
+This frontend was built with React and Vite, and connects to a production backend built with Node.js, Express and MongoDB.
 
-## Technologies
+### Live Demo
+- Frontend: https://automation-dashboard-9f3hvf59y-brunodevcores-projects.vercel.app
+- Backend API: https://invoiceflow-backend-c7q6.onrender.com
 
+### Features
+- User registration and login
+- JWT-based authenticated session
+- Protected routes
+- Client creation, editing and deletion
+- Invoice creation and payment status updates
+- Dashboard with real business metrics
+- Minimal and polished user interface
+
+### Tech Stack
 - React
 - Vite
-- JavaScript
-- TailwindCSS
-
-## Project Structure
-
-- `components/` → reusable UI components
-- `services/` → business logic and data handling
-- `App.jsx` → main application logic
-
-## Purpose
-
-This project was built as a portfolio piece to demonstrate:
-
-- frontend architecture with React
-- state management
-- component separation
-- UI development with Tailwind
-- handling and visualization of data
-
-## Live Demo
-
-👉 https://tu-proyecto.vercel.app
-
-## Future Improvements
-
-- backend integration
-- authentication system
-- advanced analytics
-- database persistence
-
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-# Automation Dashboard
-
-Dashboard orientado a pequeñas empresas para gestionar transacciones, visualizar ingresos y gastos, y dar seguimiento a alertas financieras de forma simple y organizada.
-
-## Funcionalidades
-
-- Alta de transacciones
-- Eliminación de transacciones
-- Filtro por tipo de movimiento
-- Búsqueda por concepto
-- Persistencia de datos con localStorage
-- Arquitectura modular basada en componentes
-- Capa de servicios para manejo de datos
-
-## Tecnologías utilizadas
-
-- React
-- Vite
+- React Router
+- Axios
 - Tailwind CSS
-- JavaScript (ES6+)
 
-## Estructura del proyecto
+### Backend
+This frontend connects to the InvoiceFlow backend API:
+- https://invoiceflow-backend-c7q6.onrender.com
 
-- `components/` → componentes visuales y reutilizables
-- `data/` → datos iniciales
-- `services/` → capa de servicios para persistencia de datos
+### Local Development
+npm install
+npm run dev
 
-## Objetivo
+## Notes
 
-Este proyecto fue desarrollado como pieza de portfolio para demostrar:
+This project was created as a production-style full-stack portfolio application, focused on real business workflows such as client management and invoicing.
 
-- construcción de interfaces orientadas a negocio
-- manejo de estado y datos
-- organización de código escalable
-- desarrollo frontend con enfoque profesional
+-----------------------------------------------------------------------------------------------------------
 
-## Mejoras futuras
+## Español
 
-- integración con backend real
-- autenticación de usuarios
-- base de datos
-- gráficos y analítica
-- consumo de API REST
+InvoiceFlow es una aplicación web full stack diseñada para gestionar clientes y facturas con una interfaz limpia, minimalista y profesional.
+
+Este frontend fue desarrollado con React y Vite, y se conecta a un backend en producción construido con Node.js, Express y MongoDB.
+
+### Demo en vivo
+- Frontend: https://automation-dashboard-9f3hvf59y-brunodevcores-projects.vercel.app
+- Backend API: https://invoiceflow-backend-c7q6.onrender.com
+
+### Funcionalidades
+- Registro e inicio de sesión
+- Sesión autenticada con JWT
+- Rutas protegidas
+- Creación, edición y eliminación de clientes
+- Creación de facturas y actualización de estado de pago
+- Dashboard con métricas reales de negocio
+- Interfaz minimalista y cuidada
+
+### Stack tecnológico
+- React
+- Vite
+- React Router
+- Axios
+- Tailwind CSS
+
+### Backend
+Este frontend se conecta a la API backend de InvoiceFlow:
+- https://invoiceflow-backend-c7q6.onrender.com
+
+### Desarrollo local
+npm install
+npm run dev
+
+## Notas
+
+Este proyecto fue creado como una aplicación full stack orientada a portfolio, simulando un flujo de negocio real para gestión de clientes y facturación.
